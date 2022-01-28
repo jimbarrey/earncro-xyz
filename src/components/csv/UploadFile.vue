@@ -44,7 +44,7 @@ localforage.getItem('cro.stats.showHelp').then(x => showHelp.value = x !== 'fals
     </div>
 
 
-    <a v-if="showHelp" href="https://help.crypto.com/en/articles/3438579-how-do-i-export-my-transaction-history-app" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] opacity-80 hover:opacity-100 transition rounded-xl flex items-center mt-2">
+    <a v-if="showHelp" href="https://help.crypto.com/en/articles/3438579-how-do-i-export-my-transaction-history-app" target="_blank" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] opacity-80 hover:opacity-100 transition rounded-xl flex items-center mt-2">
         <img class="h-full w-40" src="/img/faq.png" height="50" alt="">
         <div class="flex-1 p-4">
             <div class="font-bold text-violet-200">
