@@ -4,6 +4,7 @@ import SelectFile from '@/components/csv/SelectFile.vue';
 import TransactionsList from '@/components/csv/TransactionsList.vue';
 import Weekly from '@/components/csv/Weekly.vue';
 import useResults from '@/components/csv/utils/useResults';
+import formatMoney from '@/components/csv/utils/formatMoney';
 
 const selectedFile = ref(null);
 const transactions = computed(() => {
@@ -66,84 +67,84 @@ function fmtDate(date) {
                 
                 <div v-if="totalEarn.count" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl p-4 mb-2 sm:mb-6 text-lg flex items-center">
                     <div class="flex-1">
-                        <div class="text-xl font-black tracking-wider proportional-nums text-violet-100">
-                            ${{ totalEarn.totalUSD.toFixed(2) }}
+                        <div class="tabular-nums slashed-zero text-xl font-black tracking-wider text-violet-100">
+                            ${{ formatMoney(totalEarn.totalUSD) }}
                         </div>
                         <div>Total earned</div>
                     </div>
                     <div>
                         <b>{{ totalEarn.count }}</b> purchases<br>
-                        <b>${{ totalEarn.avgUSD.toFixed(2) }}</b> average
+                        <b class="tabular-nums slashed-zero">${{ formatMoney(totalEarn.avgUSD) }}</b> average
                     </div>
                 </div>
                 
                 <div class="grid sm:grid-cols-3 text-sm gap-2 sm:gap-6">
                     <div v-if="stake.count" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl p-4 flex flex-col">
                         <div class="flex-1 mb-2">
-                            <div class="text-lg font-black text-violet-200"><b>${{ stake.totalUSD.toFixed(2) }}</b></div>
+                            <div class="text-lg font-black text-violet-200 tabular-nums slashed-zero"><b>${{ formatMoney(stake.totalUSD) }}</b></div>
                             CRO staking
                         </div>
                         <div>
                             <b>{{ stake.count }}</b> purchases<br>
-                            <b>${{ stake.avgUSD.toFixed(2) }}</b> average
+                            <b class="tabular-nums slashed-zero">${{ formatMoney(stake.avgUSD) }}</b> average
                         </div>
                     </div>
 
                     <div v-if="earn.count" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl p-4 flex flex-col">
                         <div class="flex-1 mb-2">
-                            <div class="text-lg font-black text-violet-200"><b>${{ earn.totalUSD.toFixed(2) }}</b></div>
+                            <div class="text-lg font-black text-violet-200 tabular-nums slashed-zero"><b>${{ formatMoney(earn.totalUSD) }}</b></div>
                             Earn
                         </div>
                         <div>
                             <b>{{ earn.count }}</b> purchases<br>
-                            <b>${{ earn.avgUSD.toFixed(2) }}</b> average
+                            <b class="tabular-nums slashed-zero">${{ formatMoney(earn.avgUSD) }}</b> average
                         </div>
                     </div>
 
                     <div v-if="earnExtra.count" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl p-4 flex flex-col">
                         <div class="flex-1 mb-2">
-                            <div class="text-lg font-black text-violet-200"><b>${{ earnExtra.totalUSD.toFixed(2) }}</b></div>
+                            <div class="text-lg font-black text-violet-200 tabular-nums slashed-zero"><b>${{ formatMoney(earnExtra.totalUSD) }}</b></div>
                             Earn (extra)
                         </div>
                         <div>
-                            <b>{{ earnExtra.total.toFixed(2) }}</b> CRO<br>
+                            <b class="tabular-nums slashed-zero">{{ formatMoney(earnExtra.total) }}</b> CRO<br>
                             <b>{{ earnExtra.count }}</b> purchases<br>
-                            <b>${{ earnExtra.avgUSD.toFixed(2) }}</b> average
+                            <b class="tabular-nums slashed-zero">${{ formatMoney(earnExtra.avgUSD) }}</b> average
                         </div>
                     </div>
 
                     <div v-if="cashback.count" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl p-4 flex flex-col">
                         <div class="flex-1 mb-2">
-                            <div class="text-lg font-black text-violet-200"><b>${{ cashback.totalUSD.toFixed(2) }}</b></div>
+                            <div class="text-lg font-black text-violet-200 tabular-nums slashed-zero"><b>${{ formatMoney(cashback.totalUSD) }}</b></div>
                             Cashback
                         </div>
                         <div>
-                            <b>{{ cashback.total.toFixed(2) }}</b> CRO<br>
+                            <b class="tabular-nums slashed-zero">{{ formatMoney(cashback.total) }}</b> CRO<br>
                             <b>{{ cashback.count }}</b> purchases<br>
-                            <b>${{ cashback.avgUSD.toFixed(2) }}</b> average
+                            <b class="tabular-nums slashed-zero">${{ formatMoney(cashback.avgUSD) }}</b> average
                         </div>
                     </div>
 
                     <div v-if="rebate.count" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl p-4 flex flex-col">
                         <div class="flex-1 mb-2">
-                            <div class="text-lg font-black text-violet-200"><b>${{ rebate.totalUSD.toFixed(2) }}</b></div>
+                            <div class="text-lg font-black text-violet-200 tabular-nums slashed-zero"><b>${{ formatMoney(rebate.totalUSD) }}</b></div>
                             Rebate
                         </div>
                         <div>
-                            <b>{{ rebate.total.toFixed(2) }}</b> CRO<br>
+                            <b class="tabular-nums slashed-zero">{{ formatMoney(rebate.total) }}</b> CRO<br>
                             <b>{{ rebate.count }}</b> purchases<br>
-                            <b>${{ rebate.avgUSD.toFixed(2) }}</b> average
+                            <b class="tabular-nums slashed-zero">${{ formatMoney(rebate.avgUSD) }}</b> average
                         </div>
                     </div>
 
                     <div v-if="supercharger.count" class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl p-4 flex flex-col">
                         <div class="flex-1 mb-2">
-                            <div class="text-lg font-black text-violet-200"><b>${{ supercharger.totalUSD.toFixed(2) }}</b></div>
+                            <div class="text-lg font-black text-violet-200 tabular-nums slashed-zero"><b>${{ formatMoney(supercharger.totalUSD) }}</b></div>
                             Supercharge
                         </div>
                         <div>
                             <b>{{ supercharger.count }}</b> purchases<br>
-                            <b>${{ supercharger.avgUSD.toFixed(2) }}</b> average
+                            <b class="tabular-nums slashed-zero">${{ formatMoney(supercharger.avgUSD) }}</b> average
                         </div>
                     </div>
                 </div>

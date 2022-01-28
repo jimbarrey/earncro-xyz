@@ -1,4 +1,5 @@
 <script setup>import { toRefs } from 'vue';
+import formatMoney from './utils/formatMoney';
 
 
 const props = defineProps({
@@ -19,11 +20,11 @@ function fmtDate(date) {
             <div>{{ transaction.transactionKind }}</div>
         </div>
         <div class="td py-2 px-4 sm:border-b border-violet-900">
-            <div class="text-lg font-bold">
-                {{ transaction.amount }} {{ transaction.currency }}
+            <div class="text-lg font-bold tabular-nums slashed-zero">
+                {{ formatMoney(transaction.amount) }} {{ transaction.currency }}
             </div>
-            <div>
-                {{ transaction.nativeAmount }} {{ transaction.nativeCurrency }}
+            <div class="tabular-nums slashed-zero">
+                {{ formatMoney(transaction.nativeAmount) }} {{ transaction.nativeCurrency }}
             </div>
         </div>
         <div class="td py-2 px-4 sm:border-b border-violet-900">{{ fmtDate(transaction.timestamp) }}</div>
