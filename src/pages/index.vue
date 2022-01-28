@@ -73,7 +73,7 @@ function fmtDate(date) {
                         <div>Total earned</div>
                     </div>
                     <div>
-                        <b>{{ totalEarn.count }}</b> purchases<br>
+                        <b>{{ totalEarn.count }}</b> transactions<br>
                         <b class="tabular-nums slashed-zero">${{ formatMoney(totalEarn.avgUSD) }}</b> average
                     </div>
                 </div>
@@ -85,7 +85,7 @@ function fmtDate(date) {
                             CRO staking
                         </div>
                         <div>
-                            <b>{{ stake.count }}</b> purchases<br>
+                            <b>{{ stake.count }}</b> transactions<br>
                             <b class="tabular-nums slashed-zero">${{ formatMoney(stake.avgUSD) }}</b> average
                         </div>
                     </div>
@@ -96,7 +96,7 @@ function fmtDate(date) {
                             Earn
                         </div>
                         <div>
-                            <b>{{ earn.count }}</b> purchases<br>
+                            <b>{{ earn.count }}</b> transactions<br>
                             <b class="tabular-nums slashed-zero">${{ formatMoney(earn.avgUSD) }}</b> average
                         </div>
                     </div>
@@ -108,7 +108,7 @@ function fmtDate(date) {
                         </div>
                         <div>
                             <b class="tabular-nums slashed-zero">{{ formatMoney(earnExtra.total) }}</b> CRO<br>
-                            <b>{{ earnExtra.count }}</b> purchases<br>
+                            <b>{{ earnExtra.count }}</b> transactions<br>
                             <b class="tabular-nums slashed-zero">${{ formatMoney(earnExtra.avgUSD) }}</b> average
                         </div>
                     </div>
@@ -120,7 +120,7 @@ function fmtDate(date) {
                         </div>
                         <div>
                             <b class="tabular-nums slashed-zero">{{ formatMoney(cashback.total) }}</b> CRO<br>
-                            <b>{{ cashback.count }}</b> purchases<br>
+                            <b>{{ cashback.count }}</b> transactions<br>
                             <b class="tabular-nums slashed-zero">${{ formatMoney(cashback.avgUSD) }}</b> average
                         </div>
                     </div>
@@ -132,7 +132,7 @@ function fmtDate(date) {
                         </div>
                         <div>
                             <b class="tabular-nums slashed-zero">{{ formatMoney(rebate.total) }}</b> CRO<br>
-                            <b>{{ rebate.count }}</b> purchases<br>
+                            <b>{{ rebate.count }}</b> transactions<br>
                             <b class="tabular-nums slashed-zero">${{ formatMoney(rebate.avgUSD) }}</b> average
                         </div>
                     </div>
@@ -143,7 +143,7 @@ function fmtDate(date) {
                             Supercharge
                         </div>
                         <div>
-                            <b>{{ supercharger.count }}</b> purchases<br>
+                            <b>{{ supercharger.count }}</b> transactions<br>
                             <b class="tabular-nums slashed-zero">${{ formatMoney(supercharger.avgUSD) }}</b> average
                         </div>
                     </div>
