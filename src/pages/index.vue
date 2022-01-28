@@ -2,6 +2,8 @@
 import { computed, ref } from 'vue';
 import SelectFile from '@/components/csv/SelectFile.vue';
 import TransactionsList from '@/components/csv/TransactionsList.vue';
+import Weekly from '@/components/csv/Weekly.vue';
+import useResults from '@/components/csv/utils/useResults';
 
 const selectedFile = ref(null);
 const transactions = computed(() => {
@@ -11,55 +13,15 @@ const transactions = computed(() => {
     return []
 });
 
-function resultsByType(type) {
-    let total = 0;
-    let totalUSD = 0;
-    let count = 0;
-    for (const t of transactions.value) {
-        if (t.transactionKind === type) {
-            total += t.amount;
-            totalUSD += t.nativeAmountInUSD;
-            count++;
-        }
-    }
-    
-    const avg = total / count;
-    const avgUSD = totalUSD / count;
-
-    return {
-        total,
-        totalUSD,
-        avg,
-        avgUSD,
-        count,
-    }
-}
-
-const cashback = computed(() => {
-    return resultsByType('referral_card_cashback')
-})
-const stake = computed(() => {
-    return resultsByType('mco_stake_reward')
-})
-const earnExtra = computed(() => {
-    return resultsByType('crypto_earn_extra_interest_paid')
-})
-const earn = computed(() => {
-    return resultsByType('crypto_earn_interest_paid')
-})
-const supercharger = computed(() => {
-    return resultsByType('supercharger_reward_to_app_credited')
-})
-const rebate = computed(() => {
-    return resultsByType('reimbursement')
-})
-const totalEarn = computed(() => {
-    return {
-        totalUSD: cashback.value.totalUSD + earn.value.totalUSD + earnExtra.value.totalUSD + stake.value.totalUSD + rebate.value.totalUSD + supercharger.value.totalUSD,
-        avgUSD: (cashback.value.avgUSD + earn.value.avgUSD + earnExtra.value.avgUSD + stake.value.avgUSD + rebate.value.avgUSD + supercharger.value.avgUSD) / 6,
-        count: cashback.value.count + earn.value.count + earnExtra.value.count + stake.value.count + rebate.value.count,
-    }
-})
+const {
+    cashback,
+    stake,
+    earnExtra,
+    earn,
+    supercharger,
+    rebate,
+    totalEarn,
+} = useResults(transactions)
 
 const fromDate = computed(() => {
     // last row's 
@@ -184,6 +146,9 @@ function fmtDate(date) {
                         </div>
                     </div>
                 </div>
+
+                <h1 class="text-[#E02674] text-xl font-extrabold ml-1 mt-12 mb-1">Weekly</h1>
+                <Weekly :transactions="transactions" />
 
                 <h1 class="text-[#E02674] text-xl font-extrabold ml-1 mt-12 mb-1">Transactions</h1>
                 <div class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl">
