@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background: #100c22;
+            overflow-y: scroll;
+            margin: 0;
+        }
+
+        .loading-app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .loading-app svg {
+            animation: ring 2s linear infinite;
+        }
+
+        @keyframes ring {
+            0% {
+                transform: rotate(0);
+                animation-timing-function: cubic-bezier(0.55,
+                        0.055,
+                        0.675,
+                        0.19);
+            }
+
+            50% {
+                transform: rotate(900deg);
+                animation-timing-function: cubic-bezier(0.215,
+                        0.61,
+                        0.355,
+                        1);
+            }
+
+            100% {
+                transform: rotate(1800deg);
+            }
+        }
+
+    </style>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <title>EarnCRO</title>
+    <meta name="theme-color" content="#111116">
+    <meta name="description"
+        content="EarnCRO - Crypto.com App transaction history viewer. Upload your history CSV file and view the total amount of staking, earn, rebate, cashback, and supercharger rewards.">
+    <meta property="og:description"
+        content="EarnCRO - Crypto.com App transaction history viewer. Upload your history CSV file and view the total amount of staking, earn, rebate, cashback, and supercharger rewards.">
+    <meta property="og:title" content="EarnCRO - Crypto.com App transaction history viewer">
+    <meta property="og:url" content="https://earncro.xyz/">
+
+    <meta property="og:image" content="https://earncro.xyz/img/social.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@JimBarrey" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script defer data-api="/plaus-proxy/api/event" data-domain="earncro.xyz"
+        src="/plaus-proxy/js/plausible.outbound-links.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="loading-app">
+            <svg viewBox="0 0 600 600" fill="none" width="24px" color="text" xmlns="http://www.w3.org/2000/svg"
+                class="sc-bdfBQB cePNMB" style="margin-right: 8px;">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M115 191.731L300 85L485 191.731V405.192L300 511.923L115 405.192V191.731ZM226.964 177.278H372.665L390.09 251.396H209.91L226.964 177.278ZM264.037 350.715L268.857 304.391L252.915 262.885H347.083L331.512 304.391L335.961 350.715H299.628H264.037ZM373.036 428.54H346.713L315.2 399.634V384.81L347.825 353.68V304.391L390.461 276.597L439.028 313.285L373.036 428.54ZM254.028 428.91L285.541 399.633V384.81L252.916 353.68V304.391L209.91 276.967L160.972 313.285L227.334 428.91H254.028Z"
+                    fill="white"></path>
+            </svg>
+        </div>
+    </div>
+</body>
+
+</html>
