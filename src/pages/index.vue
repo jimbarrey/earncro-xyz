@@ -50,6 +50,7 @@ function fmtDate(date) {
             </p>
             <p class="text-violet-300">
                 Made by <a href="https://twitter.com/JimBarrey" target="_blank" class="underline decoration-indigo-500 decoration-dotted decoration-2 hover:decoration-[#E02674]">@JimBarrey</a>
+                - <a href="https://github.com/jimbarrey/earncro-xyz " target="_blank" class="underline decoration-indigo-500 decoration-dotted decoration-2 hover:decoration-[#E02674]">GitHub</a>
             </p>
         </div>
         <div class="page-fade-in py-10 lg:py-16 contain">
