@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref, toRefs } from 'vue';
-import { getYear, getISOWeek } from 'date-fns'
+import { getISOWeekYear, getISOWeek } from 'date-fns'
 import Week from './Week.vue';
 
 const props = defineProps({
@@ -11,7 +11,7 @@ const { transactions } = toRefs(props)
 const transactionsPerWeek = computed(() => {
     const transactionsByWeek = {}
     for (const transaction of transactions.value) {
-        const week = `${getYear(transaction.timestamp)}-${getISOWeek(transaction.timestamp)}`
+        const week = `${getISOWeekYear(transaction.timestamp)}-${getISOWeek(transaction.timestamp)}`
         if (!transactionsByWeek[week]) {
             transactionsByWeek[week] = []
         }
@@ -49,11 +49,14 @@ function nextPage() {
     <div class="bg-[#160c32] border border-[#2c1f51] text-[#b2a7f1] rounded-xl p-4">
         <div class="grid sm:grid-cols-7">
             <div class="hidden sm:block select-none">
-                <h2 class="text-violet-500 font-black tracking-wider flex items-center justify-end">
-                    <div @click="prevPage" class="flex items-center text-center justify-center cursor-pointer text-violet-500 hover:text-violet-100 active:text-white active:scale-125 transition py-1 px-2">
+                <h2 class="text-sm text-violet-500 font-black tracking-wider flex items-center justify-between -ml-2 mr-2 -my-0.5">
+                    <div @click="prevPage" class="flex items-center text-center justify-center cursor-pointer text-red-500 hover:text-red-100 active:text-white active:scale-125 transition py-1 px-2">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
                     </div>
-                    <div @click="nextPage" class="flex items-center text-center justify-center cursor-pointer text-violet-500 hover:text-violet-100 active:text-white active:scale-125 transition py-1 px-2">
+                    <div class="opacity-50">
+                        {{ skip }} / {{ weeks.length }}
+                    </div>
+                    <div @click="nextPage" class="flex items-center text-center justify-center cursor-pointer text-red-500 hover:text-red-100 active:text-white active:scale-125 transition py-1 px-2">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
                     </div>
                 </h2>
